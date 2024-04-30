@@ -16,6 +16,20 @@ cors:
     - https://studio.apollographql.com
   allow_credentials: true
 
+## Authentication and Authorization Module
+authentication:
+  router:
+    jwt:
+      header_name: Authorization
+      header_value_prefix: Bearer
+      jwks:
+        - url: https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com
+
+authorization:
+  require_authentication: false
+  preview_directives: 
+    enabled: true
+
 # This would make debugging easier, but should be a per subgraph basis for production
 include_subgraph_errors:
   all: true # Propagate errors from all subgraphs
